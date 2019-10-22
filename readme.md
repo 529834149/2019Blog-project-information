@@ -36,10 +36,63 @@ Laravel is accessible, yet powerful, providing tools needed for large, robust ap
 	view.php	视图存储路径相关配置
 
 ## 创建辅助函数
-
 Laravel 提供了很多 辅助函数，有时候我们也需要创建自己的辅助函数。
 我们把所有的『自定义辅助函数』存放于 bootstrap/helpers.php 文件中，这里需要新建一个空文件：
+指令:
+	1、touch bootstrap/helpers.php
+	2、在 bootstrap/app.php 文件的最顶部进行加载：``require_once __DIR__ . '/helpers.php'``;
 
+	或
+	1、touch bootstrap/helpers.php
+	2、在新增 helpers.php 文件之后，还需要在项目根目录下 composer.json 文件中的 autoload 选项里 files 字段加入该文件：
+		composer.json
+		{
+		    ...
+
+		    "autoload": {
+		        "psr-4": {
+		            "App\\": "app/"
+		        },
+		        "classmap": [
+		            "database/seeds",
+		            "database/factories"
+		        ],
+		        "files": [
+		            "app/helpers.php"
+		        ]
+		    }
+		    ...
+		}
+		修改保存后运行以下命令进行重新加载文件即可：
+		3、composer dump-autoload重新加载文件
+## 搭建基础布局
+	app.blade.php —— 主要布局文件，项目的所有页面都将继承于此页面。
+	_header.blade.php —— 布局的头部区域文件，负责顶部导航栏区块。
+	_footer.blade.php —— 布局的尾部区域文件，负责底部导航区块。
+	[具体相关文件看源码](https://github.com/529834149/2019Blog-project-information)
+## 消息提醒实现
+	前端:
+	@foreach (['danger', 'warning', 'success', 'info'] as $msg)
+	  @if(session()->has($msg))
+	    <div class="flash-message">
+	      <p class="alert alert-{{ $msg }}">
+	        {{ session()->get($msg) }}
+	      </p>
+	    </div>
+	  @endif
+	@endforeach
+	后台:
+	后面我们只需要往闪存里面存入:
+		session()->flash('success', 'This is a success alert—check it out!');
+		session()->flash('danger', 'This is a danger alert—check it out!');
+		session()->flash('warning', 'This is a warning alert—check it out!');
+		session()->flash('info', 'This is a info alert—check it out!');
+## Font Awesome 中文网 图标使用
+- [使用方法](http://www.fontawesome.com.cn/get-started/)
+## Git 实现 Laravel 项目的自动化部署
+- [Git自动化部署](https://learnku.com/articles/33689)
+## 创建命令
+	php artisan make:controller XxxxController 创建控制器
 - **[touch](http://www.jademei.cn/ | https://qqphp.com/)**
 - [创建文件](https://www.fragrantica.com)
 - [SOFTonSOFA](https://softonsofa.com/)
