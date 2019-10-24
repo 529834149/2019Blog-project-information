@@ -66,10 +66,17 @@ Laravel 提供了很多 辅助函数，有时候我们也需要创建自己的�
 		修改保存后运行以下命令进行重新加载文件即可：
 		3、composer dump-autoload重新加载文件
 ## 搭建基础布局
-	app.blade.php —— 主要布局文件，项目的所有页面都将继承于此页面。
-	_header.blade.php —— 布局的头部区域文件，负责顶部导航栏区块。
-	_footer.blade.php —— 布局的尾部区域文件，负责底部导航区块。
-	[具体相关文件看源码](https://github.com/529834149/2019Blog-project-information)
+	app.blade.php —— 主要布局文件，项目的所有页面都将继承于此页面
+	_header.blade.php —— 布局的头部区域文件，负责顶部导航栏区块
+	_footer.blade.php —— 布局的尾部区域文件，负责底部导航区块
+## 源码
+- [具体相关文件看源码](https://github.com/529834149/2019Blog-project-information)
+
+## 错误问答
+-  提示:Syntax error or access violation: 1071 Specified key was too long; max key(app\Providers\AppServiceProvider.php)
+	------use Illuminate\Support\Facades\Schema;
+	------Schema::defaultStringLength(191);
+
 ## 消息提醒实现
 	前端:
 	@foreach (['danger', 'warning', 'success', 'info'] as $msg)
@@ -105,14 +112,7 @@ Laravel 提供了很多 辅助函数，有时候我们也需要创建自己的�
 - [Runtime Converter](http://runtimeconverter.com/)
 - [WebL'Agence](https://weblagence.com/)
 
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## 代码生成器
+安装
+- [composer require "summerblue/generator:~0.5" --dev](https://learnku.com/courses/laravel-intermediate-training/5.5/code-generator/647)
+在『Laravel 教程』系列课程中，我们开发时遵守的代码风格是 Laravel 项目开发规范。遵照此规范，在实际操作中，有许多重复，接下来推荐一款专为此规范量身定制的代码生成器 —— Laravel 5.x Scaffold Generator 。代码生成器能让你通过执行一条 Artisan 命令，完成注册路由、新建模型、新建表单验证类、新建资源控制器以及所需视图文件等任务，不仅约束了项目开发的风格，还能极大地提高我们的开发效率。

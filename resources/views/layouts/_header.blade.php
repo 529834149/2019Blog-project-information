@@ -1,21 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-static-top">
+<nav class="navbar navbar-default navbar-static-top">
     <div class="container">
-        <!-- Branding Image -->
-        <a class="navbar-brand " href="{{ url('/') }}">
-          LaraBBS
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-header">
+
+            <!-- Collapsed Hamburger -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Branding Image -->
+            <a class="navbar-brand" href="javascript:void(0);">
+                <img src=" /default/static/images/logo.png" style="display: inline-block;height: 32px;vertical-align: middle;">宝金博客
+            </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="app-navbar-collapse">
             <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
+            <ul class="nav navbar-nav">
+
             </ul>
+
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav navbar-right">
-                <!-- Authentication Links -->
-                <li class="nav-item"><a class="nav-link" href="#">登录</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">注册</a></li>
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="article">文章列表</a></li>
+                <!-- <li><a href="{{ route('register') }}">注册</a></li> -->
+               
+            </ul>
+             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="">搜索</a>
+                <!-- <div class="col-sm-5" id="so">
+                    <div class="input-group">
+                        <input type="text" class="form-control" οnkeydοwn="onKeyDown(event)"/>
+                        <span class="input-group-addon"><a href="#"><i class="glyphicon glyphicon-search"> <span >搜索   </span></i></a></span>
+                    </div>
+                </div>  -->
+                </li>
+                <!-- <li><a href="{{ route('register') }}">注册</a></li> -->
+               
             </ul>
         </div>
     </div>
