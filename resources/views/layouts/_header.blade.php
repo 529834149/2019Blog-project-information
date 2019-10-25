@@ -30,7 +30,7 @@
             </ul>
              <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="">搜索</a>
+                    <a href=""javascript:void(0);">搜索</a>
                 <!-- <div class="col-sm-5" id="so">
                     <div class="input-group">
                         <input type="text" class="form-control" οnkeydοwn="onKeyDown(event)"/>

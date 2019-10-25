@@ -27,12 +27,10 @@
         <span class="timeago" title="发表时间" >{{ $topic->updated_at->diffForHumans() }}</span>
         <span class="glyphicon glyphicon-eye-open" aria-hidden="true" style="padding-top:10px;padding-left: 10px"></span>
         <span class="timeago" title="查看数量">245</span>
-
     </li>
     @if ( ! $loop->last)
     <hr>
     @endif
-
     @endforeach
 @else
     <div class="empty-block">暂无数据 ~_~ </div>
