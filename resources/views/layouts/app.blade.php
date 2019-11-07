@@ -7,12 +7,13 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>@yield('title', 'LaraBBS') - 宝金博客</title>
-
+    <meta name="description" content="laravel,laravel论坛,laravel社区,laravel教程,laravel视频,laravel开源,laravel新手,laravel5,PHP开源，php博客，php技术进阶，php进阶 "/>
+    <meta name="keywords" content="laravel,laravel论坛,laravel社区,laravel教程,laravel视频,laravel开源,laravel新手,laravel5" />
+    <title>@yield('title', '宝金博客') </title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}?{{time()}}" rel="stylesheet">
     <link href="{{ asset('default/static/css/default.css') }}?{{time()}}" rel="stylesheet">
+	<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
 </head>
 
 <body>
@@ -31,5 +32,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}?{{time()}}"></script>
+
 </body>
 </html>

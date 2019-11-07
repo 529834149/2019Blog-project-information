@@ -32,13 +32,15 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::prefix('article')->group(function () {
     //选择博客
    	Route::get('/', 'PagesController@root')->name('root');
-});
+}); 
 //论坛
 Route::prefix('forum')->group(function () {
     //选择博客
    	Route::get('/', 'PagesController@index')->name('home'); 
 });
-
-
+//分类文章
+Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 Route::resource('projects', 'ProjectsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
+Route::get('topics-all', 'TopicsController@all');
+Route::get('likes/{topics_id}', 'TopicsController@likes');

@@ -6,23 +6,35 @@ use App\Models\Topic;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TopicRequest;
-
+use App\Models\Category;
+use App\Models\Links;
 class TopicsController extends Controller
 {
     public function __construct()
     {
         // $this->middleware('auth', ['except' => ['index', 'show']]);
     }
-
-	public function index()
+    public function all(Topic $topic,Request $request)
 	{
-	 	$topics = Topic::with('category')->paginate(30);
+		
+	 	$topics = $topic->withOrder($request->order)->paginate(20);
+        return view('topics.index', compact('topics'));
+	}
+	public function index(Topic $topic,Request $request)
+	{
+		
+
+	 	$topics = $topic->withOrder($request->order)->paginate(20);
         return view('topics.index', compact('topics'));
 	}
 
-    public function show(Topic $topic)
+    public function show(Topic $topic,Request $request)
     {
-        return view('topics.show', compact('topic'));
+		
+		
+		$links = Links::where('type',1)->get();
+		$links2 = Links::where('type',2)->get();
+        return view('topics.show', compact('topic','links','links2'));
     }
 
 	public function create(Topic $topic)
@@ -56,5 +68,16 @@ class TopicsController extends Controller
 		$topic->delete();
 
 		return redirect()->route('topics.index')->with('message', 'Deleted successfully.');
+	}
+	public function likes(Topic $topic,$id){
+		$increments = \DB::table('topics')->where('id',intval($id))->increment('click');
+		$topics = Topic::where('id',intval($id))->first();
+		$param = array(
+			'aid'=>intval($id),
+			'click_num' =>intval($topics['click']),
+		);
+		if($increments){
+			return $this->returnCode(200,'成功',$param);
+		}
 	}
 }

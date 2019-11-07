@@ -116,3 +116,18 @@ Laravel 提供了很多 辅助函数，有时候我们也需要创建自己的�
 安装
 - [composer require "summerblue/generator:~0.5" --dev](https://learnku.com/courses/laravel-intermediate-training/5.5/code-generator/647)
 在『Laravel 教程』系列课程中，我们开发时遵守的代码风格是 Laravel 项目开发规范。遵照此规范，在实际操作中，有许多重复，接下来推荐一款专为此规范量身定制的代码生成器 —— Laravel 5.x Scaffold Generator 。代码生成器能让你通过执行一条 Artisan 命令，完成注册路由、新建模型、新建表单验证类、新建资源控制器以及所需视图文件等任务，不仅约束了项目开发的风格，还能极大地提高我们的开发效率。
+
+## 导航栏组件
+- [ hieu-le/active](https://github.com/letrunghieu/active)
+composer require "hieu-le/active:~3.5"
+
+
+## Laravel 本地作用域
+- [ 本地作用域](https://learnku.com/docs/laravel/5.5/eloquent/1332#local-scopes)
+说明:
+	本地作用域允许我们定义通用的约束集合以便在应用中复用。要定义这样的一个作用域，只需简单在对应 Eloquent 模型方法前加上一个 scope 前缀，作用域总是返回 查询构建器。一旦定义了作用域，则可以在查询模型时调用作用域方法。在进行方法调用时不需要加上 scope 前缀。如以上代码中的 recent() 和 recentReplied()。
+
+## HTMLPurifier
+- [ HTMLPurifier](http://htmlpurifier.org/)
+	HTMLPurifier 本身就是一个独立的项目，运用『白名单机制』对 HTML 文本信息进行 XSS 过滤。
+	『白名单机制』指的是使用配置信息来定义『HTML 标签』、『标签属性』和『CSS 属性』数组，在执行 clean() 方法时，只允许配置信息『白名单』里出现的元素通过，其他都进行过滤。
