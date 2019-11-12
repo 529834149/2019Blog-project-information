@@ -35,6 +35,8 @@
     @endif
     @endforeach
 @else
-    <div class="empty-block">暂无数据 ~_~ </div>
+	
+	@include('shared._nodata', ['topics' => $topics])
+    <!--<div class="empty-block">暂无数据 ~_~ </div>-->
 @endif
 </ul>

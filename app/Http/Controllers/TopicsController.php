@@ -14,24 +14,37 @@ class TopicsController extends Controller
     {
         // $this->middleware('auth', ['except' => ['index', 'show']]);
     }
-    public function all(Topic $topic,Request $request)
+    public function all(Category $category,Topic $topic,Request $request)
 	{
-		
 	 	$topics = $topic->withOrder($request->order)->paginate(20);
-        return view('topics.index', compact('topics'));
+		//判断当前分类是否是子分类
+		if($category['parent_id'] !== 0){
+			$parent_info = Category::where('id',$category['parent_id'])->first();
+		}
+		if(isset($parent_info)){
+			// 传参变量话题和分类到模板中
+			return view('topics.index', compact('topics', 'category','parent_info'));
+		}else{
+			return view('topics.index', compact('topics', 'category'));
+		}
 	}
-	public function index(Topic $topic,Request $request)
+	public function index(Category $category,Topic $topic,Request $request)
 	{
-		
-
 	 	$topics = $topic->withOrder($request->order)->paginate(20);
-        return view('topics.index', compact('topics'));
+        //判断当前分类是否是子分类
+		if($category['parent_id'] !== 0){
+			$parent_info = Category::where('id',$category['parent_id'])->first();
+		}
+		if(isset($parent_info)){
+			// 传参变量话题和分类到模板中
+			return view('topics.index', compact('topics', 'category','parent_info'));
+		}else{
+			return view('topics.index', compact('topics', 'category'));
+		}
 	}
 
     public function show(Topic $topic,Request $request)
     {
-		
-		
 		$links = Links::where('type',1)->get();
 		$links2 = Links::where('type',2)->get();
         return view('topics.show', compact('topic','links','links2'));
@@ -79,5 +92,9 @@ class TopicsController extends Controller
 		if($increments){
 			return $this->returnCode(200,'成功',$param);
 		}
+	}
+	public function getSearch(Request $request)
+	{
+		return view('seatch.create_and_edit', compact('topic'));
 	}
 }

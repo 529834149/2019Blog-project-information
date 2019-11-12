@@ -11,7 +11,7 @@
             </button>
 
             <!-- Branding Image -->
-            <a class="navbar-brand" href="javascript:void(0);">
+            <a class="navbar-brand" href="/">
                 <img src=" /default/static/images/logo.png" style="display: inline-block;height: 32px;vertical-align: middle;">宝金博客
             </a>
         </div>
@@ -30,7 +30,7 @@
             </ul>
              <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="javascript:void(0);">搜索</a>
+                   <!--<a href="javascript:void(0);return false;" id="search">搜索</a>-->
                 <!-- <div class="col-sm-5" id="so">
                     <div class="input-group">
                         <input type="text" class="form-control" οnkeydοwn="onKeyDown(event)"/>

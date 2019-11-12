@@ -23,9 +23,29 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         \Carbon\Carbon::setLocale('zh');
 		
-		View::share('cate', Category::take(11)->get());
-    }
+		// $cates = Category::get()
+		
+		// $category = Category::with('allChildrenCategorys')->find(1);
+		// $re = $category->allChildrenCategorys;
+		
+		$cates= $this->tree();
 
+			
+		
+		View::share('cate', $cates);
+    }
+	public function tree($parent_id = 0)
+    {
+        $rows = Category::where('parent_id', $parent_id)->orderBy('sort_order','ASC')->get();
+        $arr = array();
+        if (sizeof($rows) != 0){
+            foreach ($rows as $key => $val){
+                $val['list'] = $this->tree($val['id']);
+                $arr[] = $val;
+            }
+            return $arr;
+        }
+    }
     /**
      * Register any application services.
      *

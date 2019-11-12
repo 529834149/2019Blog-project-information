@@ -6,48 +6,36 @@
 
 <div class="row">
     <div class="col-lg-12 col-md-12 topic-list">
-		<ul class="breadcrumb">
-			<li><a href="#">首页</a></li>
-			@if(\Request::getRequestUri() == '/topics-all')
-			@else
-				@if($category['parent_id'] == 0)
-					<li><a href="#">{{$category['name']}}</a></li>
-				@else
-					@if(isset($parent_info))
-						<li><a href="#">{{$parent_info['name']}}</a></li>
-						<li class="active">{{$category['name']}}</li>
-					@endif
-					
-				@endif
-			@endif
-			
-			
-		</ul>
         <div class="panel panel-default">
-			
-            <div class="panel-heading collapse navbar-collapse "  id="example-navbar-collapse">
-                <ul class="nav nav-pills navbar-nav">
+            <div class="panel-heading">
+                <ul class="nav nav-pills">
+					
                     <li role="presentation" ><a href="/topics-all">全部文章</a></li>
+				
 					@foreach($cate as $k=>$v)
-						@if(count($v['list'])>0)
-							<li dropdown class="{{ active_class((if_route('categories.show') && if_route_param('category', $v['id']))) }} " role="presentation">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-									{{$v['name']}}∨
-								</a>
-								<ul class="dropdown-menu">
-									@foreach($v['list'] as $v1)
-										<li><a href="{{ route('categories.show', $v1['id']) }}">{{$v1['name']}}</a></li>
-									@endforeach
-								</ul>
-							</li>
-						@else
-							<li class="{{ active_class((if_route('categories.show') && if_route_param('category', $v['id']))) }}" role="presentation"><a href="{{ route('categories.show', $v['id']) }}">{{$v['name']}}</a></li>
-						@endif
+						<li class="{{ active_class((if_route('categories.show') && if_route_param('category', $v['id']))) }}" role="presentation"><a href="{{ route('categories.show', $v['id']) }}">{{$v['name']}}</a></li>
                     @endforeach
+					
+					<!--<div id="content" style="display: none;"><p>隐藏内容<p><p>隐藏内容<p></div>-->
+					<!--<li id="toggle" onclick="showMune();return false;" role="presentation"><a href="javascipt:void(0);" ><span id="texts">展开</span> <span class="glyphicon glyphicon-chevron-down"></span></a></li>-->
+					
+					<!--
+					@if(count($cate) > 11)
+						<li  role="presentation"><a href="" >展开 <span class="glyphicon glyphicon-chevron-down"></span></a></li>
+					@else
+						 <li style="opacity: 0.2" role="presentation"><a href=""   onclick="return false;" style="cursor: default;">展开 <span class="glyphicon glyphicon-chevron-down"></span></a></li>
+					@endif
+					-->
+                    
                 </ul>
             </div>
-           
-			
+            <div class="panel-heading">
+                <ul class="nav nav-pills">
+                    <li class="{{ active_class( ! if_query('order', 'recent') ) }}"><a href="{{ Request::url() }}?order=default">浏览最多</a></li>
+                    <li class="{{ active_class(if_query('order', 'recent')) }}"><a href="{{ Request::url() }}?order=recent">最新发布</a></li>
+
+                </ul>
+            </div>
             <div class="panel-body">
                 {{-- 话题列表 --}}
                 @include('topics._topic_list', ['topics' => $topics])

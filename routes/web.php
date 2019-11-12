@@ -44,3 +44,5 @@ Route::resource('projects', 'ProjectsController', ['only' => ['index', 'show', '
 Route::resource('topics', 'TopicsController', ['only' => ['index', 'show', 'create', 'store', 'update', 'edit', 'destroy']]);
 Route::get('topics-all', 'TopicsController@all');
 Route::get('likes/{topics_id}', 'TopicsController@likes');
+Route::get('getCategory', 'CategoriesController@getCategoryAll');
+Route::get('search', 'TopicsController@getSearch');

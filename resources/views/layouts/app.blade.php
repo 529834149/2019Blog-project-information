@@ -17,6 +17,7 @@
 </head>
 
 <body>
+
     <div id="app" class="{{ route_class() }}-page">
 
         @include('layouts._header')
@@ -32,6 +33,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}?{{time()}}"></script>
-
+	<script src="{{ asset('/default/static/js/search.js') }}?{{time()}}"></script>
 </body>
 </html>

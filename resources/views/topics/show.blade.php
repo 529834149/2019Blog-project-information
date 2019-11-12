@@ -18,7 +18,9 @@
                     <span class="timeago" title="查看数量">原创</span>
                 </div>
                 <div class="topic-body">
-                    {!! $topic->body !!}
+					{!!$topic->body!!}
+					
+                  
                 </div>
 
                 <div class="operate">
@@ -126,7 +128,7 @@ jQuery(document).ready(function($) {
     $("#likes").click(function(e) {
 		var aid = $('input[name="topic_id"]').val();
 		clicks(aid);
-        var a = new Array("很欣赏你");
+        var a = new Array("很欣赏你   ");
         var $i = $("<span/>").text(a[a_idx]);
         a_idx = (a_idx + 1) % a.length;
         var x = e.pageX,
