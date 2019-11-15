@@ -18,4 +18,8 @@ class TopicObserver
     {
         //
     }
+	public function saving(Topic $topic)
+    {
+        $topic->article_summary = make_excerpt($topic->body);
+    }
 }

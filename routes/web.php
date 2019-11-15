@@ -35,7 +35,7 @@ Route::prefix('article')->group(function () {
 }); 
 //论坛
 Route::prefix('forum')->group(function () {
-    //选择博客
+    //选择博客  
    	Route::get('/', 'PagesController@index')->name('home'); 
 });
 //分类文章
@@ -46,3 +46,5 @@ Route::get('topics-all', 'TopicsController@all');
 Route::get('likes/{topics_id}', 'TopicsController@likes');
 Route::get('getCategory', 'CategoriesController@getCategoryAll');
 Route::get('search', 'TopicsController@getSearch');
+//文本编辑器上传图片
+Route::post('upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');

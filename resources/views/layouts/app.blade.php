@@ -14,6 +14,7 @@
     <link href="{{ asset('css/app.css') }}?{{time()}}" rel="stylesheet">
     <link href="{{ asset('default/static/css/default.css') }}?{{time()}}" rel="stylesheet">
 	<link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css"/>
+	@yield('styles')
 </head>
 
 <body>
@@ -23,16 +24,17 @@
         @include('layouts._header')
 
         <div class="container">
-
+			@include('shared._messages')
             @yield('content')
 
         </div>
 
         @include('layouts._footer')
     </div>
-
+	
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}?{{time()}}"></script>
 	<script src="{{ asset('/default/static/js/search.js') }}?{{time()}}"></script>
+	@yield('scripts')
 </body>
 </html>

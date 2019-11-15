@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TopicRequest;
 use App\Models\Category;
 use App\Models\Links;
+use App\Handlers\ImageUploadHandler;
+use Illuminate\Support\Str;
 class TopicsController extends Controller
 {
     public function __construct()
@@ -16,7 +18,8 @@ class TopicsController extends Controller
     }
     public function all(Category $category,Topic $topic,Request $request)
 	{
-	 	$topics = $topic->withOrder($request->order)->paginate(20);
+	 	// $topics = $topic->where('is_show','y')->withOrder($request->order)->paginate(20);
+		$topics = $topic->withOrder($request->order)->paginate(20);
 		//判断当前分类是否是子分类
 		if($category['parent_id'] !== 0){
 			$parent_info = Category::where('id',$category['parent_id'])->first();
@@ -30,7 +33,8 @@ class TopicsController extends Controller
 	}
 	public function index(Category $category,Topic $topic,Request $request)
 	{
-	 	$topics = $topic->withOrder($request->order)->paginate(20);
+	 	// $topics = $topic->where('is_show','y')->withOrder($request->order)->paginate(20);
+		$topics = $topic->withOrder($request->order)->paginate(20);
         //判断当前分类是否是子分类
 		if($category['parent_id'] !== 0){
 			$parent_info = Category::where('id',$category['parent_id'])->first();
@@ -45,20 +49,36 @@ class TopicsController extends Controller
 
     public function show(Topic $topic,Request $request)
     {
-		$links = Links::where('type',1)->get();
-		$links2 = Links::where('type',2)->get();
-        return view('topics.show', compact('topic','links','links2'));
+		
+        return view('topics.show', compact('topic'));
     }
 
 	public function create(Topic $topic)
 	{
-		return view('topics.create_and_edit', compact('topic'));
+		
+		$categories= $this->tree();
+		
+        return view('topics.create_and_edit', compact('topic', 'categories'));
 	}
-
-	public function store(TopicRequest $request)
+	public function tree($parent_id = 0)
+    {
+        $rows = Category::where('parent_id', $parent_id)->orderBy('sort_order','ASC')->get();
+        $arr = array();
+        if (sizeof($rows) != 0){
+            foreach ($rows as $key => $val){
+                $val['list'] = $this->tree($val['id']);
+                $arr[] = $val;
+            }
+            return $arr;
+        }
+    }
+	public function store(TopicRequest $request, Topic $topic)
 	{
-		$topic = Topic::create($request->all());
-		return redirect()->route('topics.show', $topic->id)->with('message', 'Created successfully.');
+		$topic->fill($request->all());
+		$topic->is_show = 'n';
+        $topic->save();
+
+        return redirect()->route('topics.show', $topic->id)->with('success', '文章审核中！1~2个工作日审核完毕');
 	}
 
 	public function edit(Topic $topic)
@@ -97,4 +117,25 @@ class TopicsController extends Controller
 	{
 		return view('seatch.create_and_edit', compact('topic'));
 	}
+	public function uploadImage(Request $request, ImageUploadHandler $uploader)
+    {
+        // 初始化返回数据，默认是失败的
+        $data = [
+            'success'   => false,
+            'msg'       => '上传失败!',
+            'file_path' => ''
+        ];
+        // 判断是否有上传文件，并赋值给 $file
+        if ($file = $request->upload_file) {
+            // 保存图片到本地
+            $result = $uploader->save($file, 'topics', 1, 1024);
+            // 图片保存成功的话
+            if ($result) {
+                $data['file_path'] = $result['path'];
+                $data['msg']       = "上传成功!";
+                $data['success']   = true;
+            }
+        }
+        return $data;
+    }
 }

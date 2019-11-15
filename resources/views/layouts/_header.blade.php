@@ -26,11 +26,12 @@
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="/topics-all">文章列表</a></li>
                 <!-- <li><a href="{{ route('register') }}">注册</a></li> -->
+				
                
             </ul>
              <ul class="nav navbar-nav navbar-right">
                 <li>
-                   <!--<a href="javascript:void(0);return false;" id="search">搜索</a>-->
+                  <a href="{{ route('topics.create') }}">发表文章<i class="fa fa-plus"></i></a>
                 <!-- <div class="col-sm-5" id="so">
                     <div class="input-group">
                         <input type="text" class="form-control" οnkeydοwn="onKeyDown(event)"/>

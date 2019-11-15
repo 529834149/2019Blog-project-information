@@ -2,11 +2,18 @@
 
 @section('title', $topic->title)
 @section('description', $topic->excerpt)
-
+@section('styles')
+	<style>
+		.topic-body p img{
+		width:100% !important;
+	}
+	</style>
+	
+@stop
 @section('content')
 
 <div class="row">
-    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 topic-content">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 topic-content"> 
         <div class="panel panel-default">
             <div class="panel-body">
                 <h1 class="text-center">
@@ -14,15 +21,18 @@
                 </h1>
                 <div class="article-meta text-center">
                     {{ $topic->created_at->diffForHumans() }}
+					
                     ⋅<span class="glyphicon glyphicon-user" aria-hidden="true" style="padding-top:10px;padding-left: 10px"></span>
                     <span class="timeago" title="查看数量">原创</span>
                 </div>
+				
                 <div class="topic-body">
 					{!!$topic->body!!}
-					
-                  
                 </div>
-
+				<style>
+				
+				
+				</style>
                 <div class="operate">
                     <hr>
 					<a class="col-lg-5 col-md-5 col-xs-4" ></a>
@@ -35,44 +45,7 @@
             </div>
         </div>
     </div>
-	<div class="col-lg-3 col-md-3 hidden-sm hidden-xs author-info">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="text-center">
-                   社区知识库
-                </div>
-                <hr>
-                <div class="media">
-                    <div align="center">
-                           <ul class="nav nav-pills">
-							@foreach($links as $k=>$v)
-							<li style="padding:0px 5px!important;line-height: 1.2!important;"><a target="view_window" href="https://learnku.com/laravel"> {{$k+1}}、{{$v['name']}}</a></li>
-							@endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-	<div class="col-lg-3 col-md-3 hidden-sm hidden-xs author-info">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <div class="text-center">
-                   友情博客
-                </div>
-                <hr>
-                <div class="media">
-                    <div align="center">
-                        <ul class="nav nav-pills">
-							@foreach($links2 as $k=>$v)
-							<li style="padding:0px 5px!important;line-height: 1.2!important;"><a target="view_window" href="https://learnku.com/laravel"> {{$k+1}}、{{$v['name']}}</a></li>
-							@endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	
 </div>
 <script src="/default/static/js/jquery.min.js"></script>
 <script>

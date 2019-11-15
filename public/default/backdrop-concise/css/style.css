@@ -1,16 +1,6 @@
 
 /*--/banner --*/
 
-.main-banner {
-    background: url(../images/banner1.jpg)no-repeat center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    -ms-background-size: cover;
-    background-size: cover;
-    position: relative;
-    min-height: 100vh;
-}
 
 .banner-info {
     padding-top: 5em;
@@ -42,7 +32,7 @@ img.admin {
 
 .inner-w3layouts-wrap h2,
 .head-w3ls {
-    color: #fff;
+    color: red;
     font-size: 1.4em;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -51,7 +41,7 @@ img.admin {
 }
 
 .inner-w3layouts-wrap h4 {
-    color: #fff;
+    color: red;
     font-size: 1em;
     text-transform: uppercase;
     letter-spacing: 2px;
