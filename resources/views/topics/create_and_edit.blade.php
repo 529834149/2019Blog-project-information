@@ -34,10 +34,12 @@
 							@foreach ($categories as $value)
 								@if($value->parent_id == 0)
 									<option value="{{ $value->id }}">{{ $value->name }}</option>
-									@if(count($value->list)>0)
-										@foreach($value['list'] as $v)
-											<option value="{{ $v->id }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $v->name }}</option>
-										@endforeach
+									@if(isset($value->list))
+										@if(count($value->list)>0)
+											@foreach($value['list'] as $v)
+												<option value="{{ $v->id }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ $v->name }}</option>
+											@endforeach
+										@endif
 									@endif
 								@endif
 							@endforeach
