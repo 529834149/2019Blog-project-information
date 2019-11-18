@@ -24,7 +24,6 @@
 			
 		</ul>
         <div class="panel panel-default">
-			
             <div class="panel-heading collapse navbar-collapse "  id="example-navbar-collapse">
                 <ul class="nav nav-pills navbar-nav">
                     <li role="presentation" ><a href="/topics-all">全部文章</a></li>
