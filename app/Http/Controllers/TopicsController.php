@@ -19,11 +19,11 @@ class TopicsController extends Controller
     public function all(Category $category,Topic $topic,Request $request)
 	{
 	 	// $topics = $topic->where('is_show','y')->withOrder($request->order)->paginate(20);
-		$topics = $topic->withOrder($request->order)->paginate(20);
+		$topics = $topic->where('is_show','y')->withOrder($request->order)->paginate(20);
 		//判断当前分类是否是子分类
 		if($category['parent_id'] !== 0){
 			$parent_info = Category::where('id',$category['parent_id'])->first();
-		}
+		} 
 		if(isset($parent_info)){
 			// 传参变量话题和分类到模板中
 			return view('topics.index', compact('topics', 'category','parent_info'));
@@ -34,7 +34,7 @@ class TopicsController extends Controller
 	public function index(Category $category,Topic $topic,Request $request)
 	{
 	 	// $topics = $topic->where('is_show','y')->withOrder($request->order)->paginate(20);
-		$topics = $topic->withOrder($request->order)->paginate(20);
+		$topics = $topic->->where('is_show','y')->withOrder($request->order)->paginate(20);
         //判断当前分类是否是子分类
 		if($category['parent_id'] !== 0){
 			$parent_info = Category::where('id',$category['parent_id'])->first();
