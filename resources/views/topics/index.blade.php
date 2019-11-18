@@ -29,17 +29,21 @@
                 <ul class="nav nav-pills navbar-nav">
                     <li role="presentation" ><a href="/topics-all">全部文章</a></li>
 					@foreach($cate as $k=>$v)
-						@if(count($v['list'])>0)
-							<li dropdown class="{{ active_class((if_route('categories.show') && if_route_param('category', $v['id']))) }} " role="presentation">
-								<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-									{{$v['name']}}∨
-								</a>
-								<ul class="dropdown-menu">
-									@foreach($v['list'] as $v1)
-										<li><a href="{{ route('categories.show', $v1['id']) }}">{{$v1['name']}}</a></li>
-									@endforeach
-								</ul>
-							</li>
+						@if(isset($v['list']))
+							@if(count($v['list'])>0)
+								<li dropdown class="{{ active_class((if_route('categories.show') && if_route_param('category', $v['id']))) }} " role="presentation">
+									<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+										{{$v['name']}}∨
+									</a>
+									<ul class="dropdown-menu">
+										@foreach($v['list'] as $v1)
+											<li><a href="{{ route('categories.show', $v1['id']) }}">{{$v1['name']}}</a></li>
+										@endforeach
+									</ul>
+								</li>
+							@else
+								<li class="{{ active_class((if_route('categories.show') && if_route_param('category', $v['id']))) }}" role="presentation"><a href="{{ route('categories.show', $v['id']) }}">{{$v['name']}}</a></li>
+							@endif
 						@else
 							<li class="{{ active_class((if_route('categories.show') && if_route_param('category', $v['id']))) }}" role="presentation"><a href="{{ route('categories.show', $v['id']) }}">{{$v['name']}}</a></li>
 						@endif
