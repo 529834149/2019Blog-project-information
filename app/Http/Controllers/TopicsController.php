@@ -106,7 +106,7 @@ class TopicsController extends Controller
 		$increments = \DB::table('topics')->where('id',intval($id))->increment('click');
 		$topics = Topic::where('id',intval($id))->first();
 		$param = array(
-			'aid'=>intval($id),
+			'id'=>intval($id),
 			'click_num' =>intval($topics['click']),
 		);
 		if($increments){

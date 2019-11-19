@@ -34,6 +34,7 @@ class TopicController extends AdminController
 		//$grid->model()->orderBy('is_show','desc');
 		///$grid->where('is_show',$request->input('n') );
         $grid->column('id', __('自增ID'));
+		$grid->column('aid', __('随机ID'));
         $grid->column('category_id', __('分类名称'))->display(function($category_id){
 			$cate  = Category::find($category_id);
 			return $cate['name'].'('.$category_id.')';
