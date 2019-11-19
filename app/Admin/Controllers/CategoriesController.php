@@ -42,7 +42,7 @@ class CategoriesController extends AdminController
 
         $grid->column('id', __('Id'));
         $grid->column('parent_id', __('Parent id'));
-        $grid->column('sort_order', __('Order'));
+        $grid->column('order', __('Order'));
         $grid->column('name', __('Title'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
@@ -62,7 +62,7 @@ class CategoriesController extends AdminController
 
         $show->field('id', __('Id'));
         $show->field('parent_id', __('Parent id'));
-        $show->field('sort_order', __('Order'));
+        $show->field('order', __('Order'));
         $show->field('name', __('Title'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
@@ -87,3 +87,4 @@ class CategoriesController extends AdminController
         return $form;
     }
 }
+ 
