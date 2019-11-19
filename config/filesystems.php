@@ -42,7 +42,12 @@ return [
     */
 
     'disks' => [
-
+        'admin' => [
+            'driver' => 'local',
+            'root' => public_path('uploads'),
+            'visibility' => 'public',
+            'url' => '/uploads',
+        ],
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
@@ -64,5 +69,6 @@ return [
         ],
 
     ],
+
 
 ];

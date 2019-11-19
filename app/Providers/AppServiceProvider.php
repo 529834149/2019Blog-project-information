@@ -36,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
     }
 	public function tree($parent_id = 0)
     {
-        $rows = Category::where('parent_id', $parent_id)->orderBy('sort_order','ASC')->get();
+        $rows = Category::where('parent_id', $parent_id)->orderBy('order','ASC')->get();
         $arr = array();
         if (sizeof($rows) != 0){
             foreach ($rows as $key => $val){
