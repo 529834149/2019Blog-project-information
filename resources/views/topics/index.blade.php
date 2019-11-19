@@ -49,7 +49,6 @@
                     @endforeach
                 </ul>
             </div>
-           
 			
             <div class="panel-body">
                 {{-- 话题列表 --}}

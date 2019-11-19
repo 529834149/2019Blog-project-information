@@ -49,7 +49,6 @@ class TopicsController extends Controller
 
     public function show(Topic $topic,Request $request)
     {
-		
         return view('topics.show', compact('topic'));
     }
 
@@ -76,9 +75,10 @@ class TopicsController extends Controller
 	{
 		$topic->fill($request->all());
 		$topic->is_show = 'n';
+		$topic->aid =mt_rand(pow(10,(8-1)), pow(10,8)-1);
         $topic->save();
-
-        return redirect()->route('topics.show', $topic->id)->with('success', '文章审核中！1~2个工作日审核完毕');
+		
+        return redirect()->route('topics.show', $topic->aid)->with('success', '文章审核中！1~2个工作日审核完毕');
 	}
 
 	public function edit(Topic $topic)
