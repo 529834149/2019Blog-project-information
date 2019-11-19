@@ -5,7 +5,7 @@ namespace App\Models;
 class Topic extends Model
 {
     protected $fillable = ['aid','title', 'body', 'category_id', 'reply_count', 'view_count', 'last_reply_user_id', 'order', 'slug','article_summary'];
-	 protected $table ='topics';
+	protected $table ='topics';
     protected $primaryKey = 'aid';//定义主键
     public function category()
     {
