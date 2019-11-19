@@ -19,7 +19,7 @@ class TopicsController extends Controller
     public function all(Category $category,Topic $topic,Request $request)
 	{
 	 	// $topics = $topic->where('is_show','y')->withOrder($request->order)->paginate(20);
-		$topics = $topic->where('is_show','on')->withOrder($request->order)->paginate(20);
+		$topics = $topic->where('is_show','y')->withOrder($request->order)->paginate(20);
 		//判断当前分类是否是子分类
 		if($category['parent_id'] !== 0){
 			$parent_info = Category::where('id',$category['parent_id'])->first();
@@ -34,7 +34,7 @@ class TopicsController extends Controller
 	public function index(Category $category,Topic $topic,Request $request)
 	{
 	 	// $topics = $topic->where('is_show','y')->withOrder($request->order)->paginate(20);
-		$topics = $topic->where('is_show','on')->withOrder($request->order)->paginate(20);
+		$topics = $topic->where('is_show','y')->withOrder($request->order)->paginate(20);
         //判断当前分类是否是子分类
 		if($category['parent_id'] !== 0){
 			$parent_info = Category::where('id',$category['parent_id'])->first();
