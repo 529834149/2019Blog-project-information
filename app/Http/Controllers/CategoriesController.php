@@ -13,7 +13,7 @@ class CategoriesController extends Controller
 		
 		
         // 读取分类 ID 关联的话题，并按每 20 条分页
-        $topics = $topic-> withOrder($request->order)
+        $topics = $topic->where('is_show','y')->withOrder($request->order)
                         ->where('category_id', $category->id)
                         ->paginate(20);
 		//判断当前分类是否是子分类
