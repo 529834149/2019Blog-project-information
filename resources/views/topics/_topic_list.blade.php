@@ -6,7 +6,7 @@
             <div class="ant-list-item-meta">
                 <div class="ant-list-item-meta-content">
                     <h4 class="ant-list-item-meta-title">
-                        <a class="antd-pro-pages-articles-list-style-listItemMetaTitle" href="{{ route('topics.show', [$topic->aid]) }}" style="text-decoration: none;"> {{ $topic->title }}
+                        <a class="antd-pro-pages-articles-list-style-listItemMetaTitle" href="{{ route('topics.show', [$topic->id]) }}" style="text-decoration: none;"> {{ $topic->title }}
                         </a>
                     </h4>
                     <div class="ant-list-item-meta-description">

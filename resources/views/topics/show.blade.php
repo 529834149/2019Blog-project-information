@@ -47,6 +47,8 @@
     </div>
 	
 </div>
+@else
+	@include('shared._yushen')
 @endif
 <script src="/default/static/js/jquery.min.js"></script>
 <script>
